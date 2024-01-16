@@ -10,7 +10,6 @@ const client = new ApolloClient({
   },
   cache: new InMemoryCache(),
 });
-console.log(import.meta.env.VITE_HASURA_ADMIN_SECRET);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
