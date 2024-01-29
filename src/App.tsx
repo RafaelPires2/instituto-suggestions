@@ -8,9 +8,15 @@ import { Button } from "./components/button";
 import { CreateNewSuggestion } from "./components/create-new-suggestion";
 import { Suspense } from "react";
 import { suggestionsQuery } from "./data/schema/query/suggestions-query";
+import { useDeletePlaylist } from "./domain/delete-playlist.use-case";
 
 function App() {
   const { data } = useQuery<SuggestionsQueryQuery>(suggestionsQuery);
+  const { mutation } = useDeletePlaylist();
+
+  const submitDeleteMutation = (id: string) => {
+    mutation({ id: id });
+  };
 
   return (
     <div className="bg-gray-100 px-12 py-8 h-screen text-center">
@@ -29,6 +35,12 @@ function App() {
               <div className="mt-8" />
 
               <Button />
+              <button
+                className="bg-cyan-800 px-4 py-2 rounded w-full text-white font-bold"
+                onClick={() => submitDeleteMutation(suggestion.id)}
+              >
+                Deletar
+              </button>
             </SuggestionCard>
           ))}
         </Suspense>
