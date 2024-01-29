@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useMutation } from "@apollo/client";
-import { AddSuggestionsMutation } from "../data/mutation/add-suggestions-mutation";
+import { AddSuggestionsMutation } from "../data/graphql/mutation/add-suggestions-mutation";
 
 type FormData = {
   name: string;
